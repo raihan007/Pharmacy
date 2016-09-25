@@ -1,0 +1,121 @@
+html{
+  font-family:sans-serif;
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%
+}
+body{
+  margin:0
+}
+
+.lockscreen {
+    background: #d2d6de;
+}
+.lockscreen-logo {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.lockscreen .lockscreen-name {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+}
+.lockscreen-item {
+    border-radius: 4px;
+    padding: 0;
+    background: #fff;
+    position: relative;
+    margin: 10px auto 30px auto;
+    width: 300px;
+}
+.btn-round {
+    border-radius: 30px;
+}
+
+.lockscreen-image {
+    border-radius: 50%;
+    position: absolute;
+    left: -10px;
+    top: -25px;
+    background: #fff;
+    padding: 5px;
+    z-index: 10;
+}
+.lockscreen-image>img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+.lockscreen-credentials {
+    margin-left: 70px;
+}
+.lockscreen-credentials .form-control {
+    border: 0;
+}
+.lockscreen-credentials .btn {
+    background-color: none;
+    border: none;
+}
+
+.lockscreen-credentials .btn:active {
+    outline: none;
+}
+
+.lockscreen-footer {
+    margin-top: 10px;
+}
+
+.login_panel{
+  position:fixed;
+  right:0;
+  float:right;
+  height:100%;
+  width:500px;
+  margin:0;
+  padding:50px;
+  z-index:1;
+  overflow-y:auto;
+  overflow-x:auto;
+  -moz-min-width:360px;
+  -ms-min-width:360px;
+  -o-min-width:360px;
+  -webkit-min-width:360px;
+  min-width:360px
+}
+
+.login_left{
+  position:fixed;
+  height:100%;
+  left:0;
+  right:500px;
+  width:auto;
+  background:transparent url('../Images/cover.jpg') no-repeat center center;
+  -ms-background-size:cover;
+  background-size:cover
+}
+.login_header{
+  margin-bottom:30px
+}
+
+.login_forgotpassword{
+  margin-top:30px
+}
+
+.footer-main {
+  background-color: #FFF;
+  padding: 7px 13px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+@media(max-width:767px){
+
+blockquote{border-left:none}
+.login_left{position:relative;left:auto;right:auto;background:none;height:auto!important}
+.login_panel{position:relative;right:auto;float:none;height:auto;width:auto;overflow-y:auto;overflow-x:hidden}
+.login_panel ._title{text-align:center}
+.login_panel ._slogan{text-align:right}
+}
+
