@@ -106,8 +106,8 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
 <?php
 require_once(APPPATH."views/Shared/_layoutFooter.php");
 ?>
-    
+    <link rel="stylesheet" type="text/css" href="<?= base_url('Assets/css/sweet-alert.css') ?>">
     <script type="text/javascript" src="<?= base_url('Assets/ProjectJs/userController.js') ?>"></script>
-
+  <script type="text/javascript" src="<?= base_url('Assets/js/sweet-alert.js') ?>"></script>
     </body>
 </html>

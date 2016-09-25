@@ -96,7 +96,8 @@ $("#savePermission").click(function(){
                 dataType: 'json',
                 success: function(data) {
                     if(data.Status){
-                        alert("Done");
+                        //alert("Done");
+                        sweetAlert('Congratulations!', 'Your message has been successfully sent', 'success');
                     }
                     else{
                         alert("Faild");
