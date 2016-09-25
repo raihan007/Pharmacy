@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="description" content="Developed By Talukder, Md. Raihan">
         <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+        <!-- toastr -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
         <!-- bootstrap 3.0.2 -->
         <?= link_tag('Assets/css/bootstrap.min.css') ?>
         <!-- font Awesome -->

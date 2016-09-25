@@ -32,6 +32,13 @@ class Dealers extends CI_Controller {
 					$insertStatus = $this->Dealer->_Insert($insertData);
 					if( $insertStatus != 0){
 						$this->session->set_flashdata('success', 'Dealer data have been saved successfully.');
+						echo "<script>
+								var notification = {
+									type: 'success', 
+									title: 'Done', 
+									body: '".$this->session->flashdata('success')."'
+								}
+							 </script>";
 					}else{
 						$this->session->set_flashdata('error', 'Some problems occured, please try again.');
 					}
@@ -56,6 +63,13 @@ class Dealers extends CI_Controller {
 
 					if( $updateStatus != 0){
 						$this->session->set_flashdata('success', 'Dealer data have been updated successfully.');
+						echo "<script>
+								var notification = {
+									type: 'success', 
+									title: 'Done', 
+									body: '<strong>".$this->session->flashdata('success')."</strong>'
+								}
+							 </script>";
 					}else{
 						$this->session->set_flashdata('error', 'Some problems occured, please try again.');
 					}

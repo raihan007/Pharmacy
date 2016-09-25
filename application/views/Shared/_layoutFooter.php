@@ -98,6 +98,7 @@
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap.min.js') ?>"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
         var baseurl = "<?php print base_url(); ?>";
         /*var navClass = "<?php if(isset($class)){print $class;}?>";
