@@ -98,7 +98,7 @@
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap.min.js') ?>"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="<?= base_url('Assets/js/toastr.min.js') ?>"></script>
     <script type="text/javascript">
         var baseurl = "<?php print base_url(); ?>";
         /*var navClass = "<?php if(isset($class)){print $class;}?>";
@@ -124,8 +124,11 @@
     
     <!-- Datetimepicker -->
     <script src="<?= base_url('Assets/bootstrap_datepicker/bootstrap-datetimepicker.min.js')?>" type="text/javascript"></script>
-
-    <!-- Datetimepicker -->
-    <script src="<?= base_url('Assets/js/jquery.splitter.js')?>" type="text/javascript"></script>
+    <script type="text/javascript">
+      $("#toastr").click(function(){
+        // Display a warning toast, with no title
+        toastr.warning('My name is Inigo Montoya. You Killed my father, prepare to die!');
+      });
+    </script>
     
     
