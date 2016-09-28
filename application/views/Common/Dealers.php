@@ -3,7 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <?php
 require_once(APPPATH."views/Shared/_layoutHeader.php");
-?>                  
+?>                  <form method="post" action="<?= base_url('Dealers/testREq')?>">
+                    <input type="text" name="name"></input>
+                    <button type="submit" name="submit" value="submit">submit</button>
+                    </form>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel">
@@ -45,7 +48,8 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                                                     data-minimum-count-columns="2"
                                                     data-pagination="true"
                                                     data-id-field="EntityNo"
-                                                    data-page-list="[10, 25, 50, 100, ALL]"
+                                                    data-page-size="5"
+                                                    data-page-list="[5,10, 25, 50, 100, ALL]"
                                                     data-show-footer="false"
                                                     data-side-pagination="server"
                                                     data-sort-name="EntityNo"
@@ -62,26 +66,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                                             </div>
                                     </div>
                                     <div class="col-xs-6 table-responsive">
-                                        <?php  if( $success = $this->session->flashdata('success')): ?>
-                                        <div class="row">
-                                            <div class="col-md-8 col-md-offset-2">
-                                                <div class="alert alert-dismissible alert-info">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong><?= $success ?></strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php endif; ?>
-                                        <?php  if( $error = $this->session->flashdata('error')): ?>
-                                        <div class="row">
-                                            <div class="col-md-8 col-md-offset-2">
-                                                <div class="alert alert-dismissible alert-warning">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong><?= $error ?></strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php endif; ?>
+                                        
                                         <form id="DealerForm" name="DealerForm" method="post" class="form-horizontal" action="<?= base_url('Dealers') ?>">
                                           <div class="form-group">
                                             <label for="EntityNo" class="col-sm-2 control-label">Id</label>

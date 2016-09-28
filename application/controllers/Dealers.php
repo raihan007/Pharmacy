@@ -9,9 +9,13 @@ class Dealers extends CI_Controller {
 		$this->load->model('DealersModel','Dealer');
 	}
 
+	public function testREq(){
+		echo $_SERVER['REQUEST_METHOD'];
+	}
+
 	public function Index(){
 		$data['title'] = 'Dealers Info.';
-		if($this->input->post()){
+		if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$this->load->library('form_validation');
 			//$this->form_validation->set_rules('DealerEmail', 'Email', 'callback_check_user_email');
 			if($this->form_validation->run('DealerForm')){
