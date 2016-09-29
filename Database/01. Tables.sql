@@ -50,6 +50,24 @@ UNIQUE (EntityNo),
 FOREIGN KEY (UserId) REFERENCES users_info(UserId)
 );
 
+CREATE TABLE IF NOT EXISTS dealers_info (
+EntityNo int(11) NOT NULL AUTO_INCREMENT,
+DealerId varchar(50) NOT NULL,
+DealerTitle varchar(150) NOT NULL,
+DealerAddress varchar(200) NOT NULL,
+City varchar(20) NOT NULL,
+Country varchar(20) NOT NULL,
+Phone varchar(30) NOT NULL,
+Email varchar(50) NOT NULL,
+Fax varchar(20) DEFAULT NULL,
+Remarks varchar(200) DEFAULT NULL,
+LastChanged datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+LastChangedBy varchar(50) NOT NULL,
+PRIMARY KEY (DealerId),
+UNIQUE (EntityNo,DealerId,Email,Phone,Fax)
+);
+
+
 
 CREATE OR REPLACE VIEW users_Info_view
 AS

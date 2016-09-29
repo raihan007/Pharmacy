@@ -53,7 +53,7 @@ class DealersModel extends CI_Model {
         if(!array_key_exists("LastChangedBy",$data)){
             $data['LastChangedBy'] = '5925025E-8C57-48C7-BB68-187A52F26926';
         }
-        $this->primaryKey = 'EntityNo';
+        $this->primaryKey = 'DealerId';
         $insert = $this->db->insert($this->tableName,$data);
         if($insert){
             return $this->db->insert_id();
