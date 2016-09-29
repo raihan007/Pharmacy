@@ -9,16 +9,21 @@ class Dealers extends CI_Controller {
 		$this->load->model('DealersModel','Dealer');
 	}
 
+
 	public function test(){
 		$this->load->library('encrypt');
 		$encrypted_string = $this->encrypt->encode("Raihan");
 		$plaintext_string = $this->encrypt->decode("AJCiIoa1MIC6K0kkTNN9NxShQBYyzzAjFMCcsnSolB2Zk05pnCE9+41sOvVA8Q6bmC2Svgo6Gy87jzyYu6tt/Q==");
 		echo $encrypted_string,$plaintext_string;
+	
+	public function testREq(){
+		echo $_SERVER['REQUEST_METHOD'];
+
 	}
 
 	public function Index(){
 		$data['title'] = 'Dealers Info.';
-		if($this->input->post()){
+		if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$this->load->library('form_validation');
 			//$this->form_validation->set_rules('DealerEmail', 'Email', 'callback_check_user_email');
 			if($this->form_validation->run('DealerForm')){
