@@ -9,6 +9,23 @@ $(document).ready(function (e) {
         $('ul a[href="' + this.location.href + '"]').parents('li').addClass('active');
       });
 
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
 
 $('.cancel').on('click', function() {
     $('.ChangePasswordForm').clearForm();
@@ -190,14 +207,6 @@ var $table = $('#eventsTable');
         }
     };*/
 
-$(function ()
-{
-    if(typeof notification !== 'undefined')
-    {
-        toastr[notification.type](notification.body,notification.title);
-    }
-});
-
 toastr.options = {
   "closeButton": true,
   "debug": false,
@@ -208,12 +217,20 @@ toastr.options = {
   "onclick": null,
   "showDuration": "300",
   "hideDuration": "1000",
-  "timeOut": "10000",
+  "timeOut": "5000",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
+
+$(function ()
+{
+    if(typeof notification !== 'undefined')
+    {
+        toastr[notification.type](notification.body,notification.title);
+    }
+});
     
 

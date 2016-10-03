@@ -290,7 +290,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </a>
                           <ul class="treeview-menu">
                             <li><a href="<?= base_url('Dealers') ?>"><i class="fa fa-medkit"></i> Dealers Info.</a></li>
-                            <li><a href="<?= base_url('Medicines/Create') ?>"><i class="fa fa-medkit"></i> Add Medicine</a></li>
+                            <li><a href="<?= base_url('Common/Category') ?>"><i class="fa fa-medkit"></i> Categories</a></li>
                           </ul>
                         </li>
                         <li class="treeview">
@@ -312,43 +312,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row" style="margin-bottom:5px;">
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-red"><i class="fa fa-list-alt"></i></span>
-                                <div class="sm-st-info">
-                                    <span><?= $totalActivities=20; ?></span>
-                                    <strong>Total Programs</strong> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
-                                <div class="sm-st-info">
-                                    <span><?= $totalActivities=20; ?></span>
-                                    <strong>Total Batches</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
-                                <div class="sm-st-info">
-                                    <span><?= $totalActivities=20; ?></span>
-                                    <strong>Total Students</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-green"><i class="fa fa-users"></i></span>
-                                <div class="sm-st-info">
-                                    <span><?= $totalActivities=20; ?></span>
-                                    <strong>Total Faculties</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
                 

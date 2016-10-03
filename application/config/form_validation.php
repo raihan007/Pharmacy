@@ -114,6 +114,19 @@ $config =array(
 						)
 				   ),
 
+	'CategoryForm' => array(
+						array(
+								'field' => 'Title',
+								'label' => 'Title',
+								'rules' => 'required|alpha|trim|callback_check_category_title',
+						),
+						array(
+								'field' => 'Remarks',
+								'label' => 'Remarks',
+								'rules' => 'trim|max_length[300]',
+						),
+				   ),
+
 	'NewProgramForm' => array(
 						array(
 								'field' => 'ProgramId',
