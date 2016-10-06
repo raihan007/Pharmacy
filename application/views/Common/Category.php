@@ -24,6 +24,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                                                 <table id="CategoriesTable"
                                                     data-toggle="table"
                                                     data-height="450"
+                                                    data-click-to-select="true"
                                                     data-url='<?= base_url('Common/Categories_json')?>'
                                                     data-cookie="true"
                                                     data-cookie-id-table="saveId"

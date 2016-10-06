@@ -52,14 +52,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                echo '<div class="form-group">';
 		                                	echo form_label('Category :', 'Category', array('class' =>'col-lg-2 col-sm-2 control-label'));
 		                                	echo '<div class="col-lg-5">';
-		                                		$data= array(
-													'type' => 'text',
-													'name' => 'Category',
-													'value' => set_value('Category'),
-													'placeholder' => 'Enter Medicine Category',
-													'class' => 'form-control input-sm'
-													);
-												echo form_input($data);
+		                                		echo form_dropdown('Category', $Category, set_value('Category'),array('class'=>"form-control input-sm", 'name'=>"Category", 'id'=>"Category"));
 		                                	echo '</div>';
 		                                	echo '<div class="col-lg-5">';
                                     			echo form_error('Category');
@@ -84,15 +77,10 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
                                 			echo '</div>';
 		                                echo '</div>';
 
-		                                $options = array(
-										        'Male' => 'Male',
-										        'Female' => 'Female',
-											);
-
 		                                echo '<div class="form-group">';
 		                                	echo form_label('Manufacturer :', 'Manufacturer', array('class' =>'col-lg-2 col-sm-2 control-label'));
 		                                	echo '<div class="col-lg-5">';
-		                                		echo form_dropdown('Manufacturer', $options, '','class="form-control input-sm id="Manufacturer"');
+		                                		echo form_dropdown('Manufacturer', $Manufacturer, set_value('Manufacturer'),array('class'=>"form-control input-sm", 'name'=>"Manufacturer", 'id'=>"Manufacturer"));
 		                                	echo '</div>';
 		                                	echo '<div class="col-lg-5">';
                                     			echo form_error('Manufacturer');

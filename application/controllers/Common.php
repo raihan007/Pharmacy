@@ -127,4 +127,24 @@ class Common extends CI_Controller {
 		$data['total'] = $TotalCategories;
 		echo json_encode($data);
 	}
+
+	public function test()
+	{
+		$TotalCategories = $this->Common->getTotalCategories();
+		if(isset($_REQUEST['search']) && isset($_REQUEST['type'])){
+        	$search = $_REQUEST['search'];
+        	$type = $_REQUEST['type'];
+    	}else{
+        	$search = '';
+        	$type = '';
+    	}
+		//$sort =$_REQUEST['sort'];
+		//$order = $_REQUEST['order'];
+		//$offset = $_REQUEST['offset'];
+		//$limit = $_REQUEST['limit'];
+		
+		$data['rows'] = $this->Common->_Get1();
+		$data['total'] = $TotalCategories;
+		echo json_encode($data);
+	}
 }

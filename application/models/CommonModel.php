@@ -29,6 +29,24 @@ class CommonModel extends CI_Model {
 		}
 	}
 
+	public function _Get1()
+	{
+		$query = $this->db
+					->from($this->tableName);
+		
+
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else 
+		{
+			return array();
+		}
+	}
+
 	public function _GetById($table = '',$EntityNo = ''){
 		$query = $this->db
 					->select('EntityNo')

@@ -17,15 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Ionicons -->
         <?= link_tag('Assets/css/ionicons.min.css') ?>
         <?= link_tag('Assets/css/bootstrap-table.css') ?>
-        <?= link_tag('Assets/js/jquery.splitter.css') ?>
         <!-- google font -->
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        
+        <!-- Date Picker -->
+        <?= link_tag('Assets/bootstrap_datepicker/bootstrap-datetimepicker.min.css') ?>
+
         <!-- Theme style -->
         <?= link_tag('Assets/css/style.css') ?>
         <?= link_tag('Assets/css/style1.css') ?>
-        <!-- Date Picker -->
-        <?= link_tag('Assets/bootstrap_datepicker/bootstrap-datetimepicker.min.css') ?>
+        
     </head>
     <body class="skin-black">
         <header class="header">
