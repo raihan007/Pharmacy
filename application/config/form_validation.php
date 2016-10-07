@@ -127,27 +127,57 @@ $config =array(
 						),
 				   ),
 
-	'NewProgramForm' => array(
+	'NewMedicineForm' => array(
 						array(
-								'field' => 'ProgramId',
-								'label' => 'Program ID',
-								'rules' => 'required|is_natural_no_zero|trim|is_unique[educational_programs.ProgramId]',
+								'field' => 'Name',
+								'label' => 'Name',
+								'rules' => 'required|trim|callback_Check_Is_Unique',
 						),
 						array(
-								'field' => 'ProgramName',
-								'label' => 'Program Name',
-								'rules' => 'required|alpha|trim|is_unique[educational_programs.ProgramName]',
+								'field' => 'Category',
+								'label' => 'Category',
+								'rules' => 'required|trim',
 						),
 						array(
-								'field' => 'Supervisor',
-								'label' => 'Supervisor',
-								'rules' => 'required|is_natural_no_zero|trim',
+								'field' => 'BatchNumber',
+								'label' => 'Batch number',
+								'rules' => 'required|trim',
 						),
 						array(
-								'field' => 'OpenDate',
-								'label' => 'Opening Date',
-								'rules' => 'required|date|valid_date[y-m-d,-]',
-						)
+								'field' => 'Manufacturer',
+								'label' => 'Manufacturer',
+								'rules' => 'required|trim',
+						),
+						array(
+								'field' => 'Quantity',
+								'label' => 'Quantity',
+								'rules' => 'required|trim|callback_Check_Is_Float',
+						),
+						array(
+								'field' => 'EntryDate',
+								'label' => 'Medicine entry date',
+								'rules' => 'required|trim|date',
+						),
+						array(
+								'field' => 'ProductionDate',
+								'label' => 'Medicine production date',
+								'rules' => 'required|trim|date',
+						),
+						array(
+								'field' => 'ExpireDate',
+								'label' => 'Medicine expire date',
+								'rules' => 'required|trim|date',
+						),
+						array(
+								'field' => 'BuyingPrice',
+								'label' => 'Medicine buying price',
+								'rules' => 'required|trim|callback_Check_Is_Float',
+						),
+						array(
+								'field' => 'SellingPrice',
+								'label' => 'Medicine selling date',
+								'rules' => 'required|trim|callback_Check_Is_Float',
+						),
 				   ),
 );
 

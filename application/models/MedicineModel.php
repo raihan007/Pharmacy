@@ -1,9 +1,9 @@
 <?php
 
-class MedicineModel extends CI_Model {
+class MedicineModel extends My_Model {
 	
 	function __construct() {
-		parent::__construct();
+		parent::__construct('medicines_info');
 	}
 
 	public function getCoursesList($limit, $offset)

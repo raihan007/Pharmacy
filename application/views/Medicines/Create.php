@@ -16,23 +16,6 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 									echo form_open_multipart(base_url('Medicines/Create'),array('name' => 'NewMedicineForm','class' => 'form-horizontal', 'id' => 'NewMedicineForm'));
 
 		                                echo '<div class="form-group">';
-		                                	echo form_label('Entity No :', 'EntityNo', array('class' =>'col-lg-2 col-sm-2 control-label'));
-		                                	echo '<div class="col-lg-5">';
-		                                		$data= array(
-													'type' => 'text',
-													'name' => 'EntityNo',
-													'value' => set_value('EntityNo'),
-													'readonly' => 'readonly',
-													'class' => 'form-control input-sm'
-													);
-												echo form_input($data);
-		                                	echo '</div>';
-		                                	//echo '<div class="col-lg-5">';
-                                    			//echo form_error('PhoneNo');
-                                			//echo '</div>';
-		                                echo '</div>';
-
-		                                echo '<div class="form-group">';
 		                                	echo form_label('Name :', 'Name', array('class' =>'col-lg-2 col-sm-2 control-label'));
 		                                	echo '<div class="col-lg-5">';
 		                                		$data= array(
@@ -44,7 +27,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 													);
 												echo form_input($data);
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('Name');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -54,7 +37,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                	echo '<div class="col-lg-5">';
 		                                		echo form_dropdown('Category', $Category, set_value('Category'),array('class'=>"form-control input-sm", 'name'=>"Category", 'id'=>"Category"));
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('Category');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -82,7 +65,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                	echo '<div class="col-lg-5">';
 		                                		echo form_dropdown('Manufacturer', $Manufacturer, set_value('Manufacturer'),array('class'=>"form-control input-sm", 'name'=>"Manufacturer", 'id'=>"Manufacturer"));
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('Manufacturer');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -102,7 +85,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 													);
 												echo form_input($data);
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('Quantity');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -124,7 +107,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                			echo '</div>';
 												echo '</div>';
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('EntryDate');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -146,7 +129,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                			echo '</div>';
 												echo '</div>';
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('ProductionDate');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -168,7 +151,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                			echo '</div>';
 												echo '</div>';
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('ExpireDate');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -185,7 +168,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 													);
 												echo form_input($data);
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('BuyingPrice');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -202,7 +185,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 													);
 												echo form_input($data);
 		                                	echo '</div>';
-		                                	echo '<div class="col-lg-5">';
+		                                	echo '<div class="text-danger col-lg-5">';
                                     			echo form_error('SellingPrice');
                                 			echo '</div>';
 		                                echo '</div>';
@@ -213,7 +196,6 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 		                                        echo "&nbsp;";
 		                                        $data = array(
 													'type' => 'submit',
-													'name'=> 'submit',
 													'value'=> 'Save',
 													'class'=> 'btn btn-info btn-sm'
 													);
