@@ -69,7 +69,7 @@ UNIQUE (EntityNo),
 FOREIGN KEY (UserId) REFERENCES users_info(UserId)
 );
 
-<<<<<<< HEAD
+
 CREATE TABLE IF NOT EXISTS dealers_info (
 EntityNo int(11) NOT NULL AUTO_INCREMENT,
 DealerId varchar(50) NOT NULL,
@@ -88,7 +88,6 @@ UNIQUE (EntityNo,DealerId,Email,Phone,Fax)
 );
 
 
-=======
 CREATE TABLE IF NOT EXISTS access_history (
 EntityNo int(11) NOT NULL AUTO_INCREMENT,
 UserId varchar(50) NOT NULL,
@@ -124,7 +123,6 @@ PRIMARY KEY (SellDetailsId),
 UNIQUE (EntityNo,SellDetailsId)
 );
 
->>>>>>> origin/master
 
 CREATE OR REPLACE VIEW users_Info_view
 AS
@@ -136,3 +134,11 @@ CREATE OR REPLACE VIEW access_history_view
 AS
 SELECT users_info.EntityNo,concat(users_info.FirstName,' ',users_info.LastName) AS "FullName",users_info.Email,access_history.LoginTime FROM access_history 
 JOIN users_info ON access_history.UserId = users_info.UserId;
+
+
+CREATE OR REPLACE VIEW medicines_info_view
+AS
+Select medicines_info.EntityNo,medicines_info.Name,categories.Title as 'Category',medicines_info.BatchNumber,dealers_info.DealerTitle as 'Manufacturer',medicines_info.Quantity,
+medicines_info.EntryDate,medicines_info.ProductionDate,medicines_info.ExpireDate,medicines_info.BuyingPrice,medicines_info.SellingPrice FROM medicines_info
+inner join categories on categories.EntityNo = medicines_info.Category
+inner join dealers_info on dealers_info.DealerId = medicines_info.Manufacturer;

@@ -12,7 +12,29 @@ class MY_Model extends CI_Model {
 		parent::__construct();
 	}
  
-	public function get_all($limit = -1, $offset = 0, $orderby = '') {}
+	public function Get($details=false,$type='',$search='',$sort='',$order='',$limit='',$offset=''){
+		if($details === true) {
+            $this->tableName = $this->tableName.'_view';
+        }
+		$query = $this->db
+					->from($this->tableName)
+					->order_by($sort, $order)
+					->limit($limit, $offset);
+		if($type && $search) {
+            $this->db->where($type,$search);
+        }
+
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else 
+		{
+			return array();
+		}
+	}
 
 	public function Insert($data = array()){
         if(!array_key_exists("LastChanged",$data)){
@@ -30,7 +52,10 @@ class MY_Model extends CI_Model {
         }
     }
 
-    public function GetById($where = array()){
+    public function GetWhere($details=false,$where = array()){
+    	if($details === true) {
+            $this->tableName = $this->tableName.'_view';
+        }
 		$query = $this->db
 					->select()
 					->from($this->tableName)
@@ -60,11 +85,17 @@ class MY_Model extends CI_Model {
 	}
 
     function IsUnique($Where = array(), $WhereNot = array()) {
+
         $this->db->where($Where);
-        if(!empty($whereNot)) {
-            $this->db->where_not_in($WhereNot);
+
+        if(! empty($WhereNot)) {
+        	foreach ($WhereNot as $key => $value) {
+        		$this->db->where_not_in($key,$value);
+        	}
         }
         return $this->db->get($this->tableName)->num_rows();
+        //print_r($this->db->queries); 
+        //exit;
     }
 
     public function GetTotalCount()
@@ -78,6 +109,16 @@ class MY_Model extends CI_Model {
  
 	public function get_total_count_where($where) {}
  
-	public function get_where($where = array(), $limit = 10, $offset = 0, $orderby = '') {}
+	public function PermissionStatus($UserId = ''){
+		$query = $this->db
+					->select('PermissionNo')
+					->from('dt_user_permission')
+					->where('UserId',$UserId)
+					->get();
+
+		$PermissionNo = (int) $query->row('PermissionNo');
+
+		return ($PermissionNo === 0 ? false : true);
+	}
  
 }

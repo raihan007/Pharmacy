@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 07:45 PM
+-- Generation Time: Oct 08, 2016 at 08:21 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -47,17 +47,6 @@ INSERT INTO `access_history` (`EntityNo`, `UserId`, `LoginTime`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `access_history_view`
---
-CREATE TABLE IF NOT EXISTS `access_history_view` (
-`EntityNo` int(11)
-,`FullName` varchar(41)
-,`Email` varchar(50)
-,`LoginTime` datetime
-);
--- --------------------------------------------------------
-
---
 -- Table structure for table `categories`
 --
 
@@ -75,7 +64,6 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 INSERT INTO `categories` (`EntityNo`, `Title`, `Remarks`, `LastChanged`, `LastChangedBy`) VALUES
 (3, 'Antacids', 'Drugs that relieve indigestion and heartburn by neutralizing stomach acids', '2016-10-03 16:48:14', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(4, 'Antibiotics', 'Drugs made from naturally occurring and synthetic substances that combat bacterial infection. Some\r\nantibiotics are effective only against limited types of bacteria. Others, known as broad spectrum antibiotics, are effective\r\nagainst a wide range of bacteria', '2016-10-03 16:54:53', '5925025E-8C57-48C7-BB68-187A52F26926'),
 (5, 'Analgesics', 'Drugs that relieve pain. There are two main types: non-narcotic analgesics for mild pain, and\r\nnarcotic analgesics for severe pain', '2016-10-03 16:59:14', '5925025E-8C57-48C7-BB68-187A52F26926'),
 (6, 'Vitamins', 'Chemicals essential in small quantities for good health. Some vitamins are not manufactured by the body, but\r\nadequate quantities are present in a normal diet. People whose diets are inadequate or who have digestive tract or liver\r\ndisorders may need to take supplementary vitamins', '2016-10-03 17:18:37', '5925025E-8C57-48C7-BB68-187A52F26926'),
 (7, 'Antipyretics', 'Drugs that reduce fever', '2016-10-03 17:29:54', '5925025E-8C57-48C7-BB68-187A52F26926');
@@ -169,27 +157,30 @@ CREATE TABLE IF NOT EXISTS `medicines_info` (
   `BatchNumber` varchar(11) NOT NULL,
   `Manufacturer` varchar(50) NOT NULL,
   `Quantity` int(11) NOT NULL,
-  `EntryDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ProductionDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ExpireDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `EntryDate` date NOT NULL,
+  `ProductionDate` date NOT NULL,
+  `ExpireDate` date NOT NULL,
   `BuyingPrice` double(10,2) NOT NULL,
   `SellingPrice` double(10,2) NOT NULL,
   `LastChanged` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `LastChangedBy` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `medicines_info`
 --
 
 INSERT INTO `medicines_info` (`EntityNo`, `MedicineId`, `Name`, `Category`, `BatchNumber`, `Manufacturer`, `Quantity`, `EntryDate`, `ProductionDate`, `ExpireDate`, `BuyingPrice`, `SellingPrice`, `LastChanged`, `LastChangedBy`) VALUES
-(2, '11C97114-3942-4388-B50E-95956CD1AD30', 'dsgdgdfg', 3, 'dsfdsfds', '6F8E82A1-E1A6-46E3-8BFB-8A8EAA2FA508', 12, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 11.00, 122.00, '2016-10-07 19:19:20', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(7, '212C7A54-4CD4-4362-BB4B-2C9EA7C82589', 'fdsfsdfsdf', 5, '232432432', 'BDC46075-E491-4639-AF0F-F58F9FD38F78', 23, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 345.00, 350.00, '2016-10-07 19:41:27', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(5, '25ED6189-42F5-428A-AFD6-802A7322FC76', 'fsdfdsfsdfsd', 4, 'ddsf', 'A0E739AA-4B6C-4488-99FB-18ED643EFA69', 12, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 212.00, 145.00, '2016-10-07 19:34:20', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(4, '3DD981E3-5E32-4E9A-B6A7-08B14E500D8D', 'fdgfdgfd', 5, 'gfdgfdgf', 'ADA958AF-8A82-46DF-909B-00BADAF50123', 233, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 34.00, 45.00, '2016-10-07 19:28:53', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(6, '6C26DC03-2C74-438C-9ED0-A95A02E67952', 'gfgfdg', 6, 'gfdgdfgdf', 'BDC46075-E491-4639-AF0F-F58F9FD38F78', 2323, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 233.00, 234.00, '2016-10-07 19:40:11', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(8, 'A5671687-E362-447D-BD6E-80511A2842B8', 'dfdsfsdfsdfsd', 5, '232432432', 'BDC46075-E491-4639-AF0F-F58F9FD38F78', 23, '2016-10-07 00:00:00', '2016-10-07 00:00:00', '2016-10-07 00:00:00', 345.00, 350.00, '2016-10-07 19:42:57', '5925025E-8C57-48C7-BB68-187A52F26926'),
-(1, 'E1886147-32F8-44BC-8FF3-596980920808', 'Napa', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06 22:41:13', '2016-10-06 22:41:13', '2016-10-06 22:41:13', 10.00, 15.00, '2016-10-06 22:41:13', '5925025E-8C57-48C7-BB68-187A52F26926');
+(2, '11C97114-3942-4388-B50E-95956CD1AD30', 'Napa', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(7, '212C7A54-4CD4-4362-BB4B-2C9EA7C82589', 'mhjuyiyu', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(5, '25ED6189-42F5-428A-AFD6-802A7322FC76', 'dsfsdfsdf4', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(4, '3DD981E3-5E32-4E9A-B6A7-08B14E500D8D', 'eregrth', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(11, '56204545-452E-45A6-8E0B-3E0FC6462DE6', 'fdfhgfhfg', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-08 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(9, '619FAB8E-D585-4AA8-A6E4-745AF12C318B', 'ffdbgfhytr', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-08 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(6, '6C26DC03-2C74-438C-9ED0-A95A02E67952', 'rrergfd', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(8, 'A5671687-E362-447D-BD6E-80511A2842B8', 'frgfdg', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-07 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(10, 'AA7EABC7-5957-4F57-8DEE-A63842FB9CEC', 'sadsadsd', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-08 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926'),
+(1, 'E1886147-32F8-44BC-8FF3-596980920808', 'ertgrgdfg', 3, '325486', '5E90F9A9-13E7-46D8-923D-C60F325E6B9D', 50, '2016-10-06', '2016-10-06', '2016-10-06', 10.00, 15.00, '2016-10-06 00:00:00', '5925025E-8C57-48C7-BB68-187A52F26926');
 
 -- --------------------------------------------------------
 
@@ -260,32 +251,6 @@ INSERT INTO `users_info` (`EntityNo`, `UserId`, `FirstName`, `LastName`, `Gender
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `users_info_view`
---
-CREATE TABLE IF NOT EXISTS `users_info_view` (
-`EntityNo` int(11)
-,`UserId` varchar(50)
-,`FirstName` varchar(20)
-,`LastName` varchar(20)
-,`Gender` varchar(11)
-,`Email` varchar(50)
-,`Photo` varchar(150)
-,`PermanentAddress` varchar(150)
-,`PresentAddress` varchar(150)
-,`PhoneNo` varchar(20)
-,`Birthdate` date
-,`BloodGroup` varchar(5)
-,`NationalIdNo` varchar(50)
-,`JoinDate` datetime
-,`Role` varchar(10)
-,`CreatedBy` varchar(50)
-,`CreatedTime` datetime
-,`Username` varchar(20)
-,`Password` varchar(130)
-);
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_access`
 --
 
@@ -303,24 +268,6 @@ CREATE TABLE IF NOT EXISTS `user_access` (
 INSERT INTO `user_access` (`EntityNo`, `UserId`, `Username`, `Password`) VALUES
 (2, '5925025E-8C57-48C7-BB68-187A52F26926', 'raihan', '8854e89fab187685f0492556f2ef73d97505f541a2bbeea22a4eb59d1534f3aadcc7a97a70d2f4137988971638a59653c459a9f8d4427eab43369894905b7e1c'),
 (1, 'FC9F2761-3F2B-41D3-8523-1AA438454193', 'Raihan_007', '$2y$10$dOfNhzhE9c37IMIkg9ORi.DmbK6Qloq5GAcLnuZDcExd5YnSb9d9S');
-
--- --------------------------------------------------------
-
---
--- Structure for view `access_history_view`
---
-DROP TABLE IF EXISTS `access_history_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `access_history_view` AS select `access_history`.`EntityNo` AS `EntityNo`,concat(`users_info`.`FirstName`,' ',`users_info`.`LastName`) AS `FullName`,`users_info`.`Email` AS `Email`,`access_history`.`LoginTime` AS `LoginTime` from (`access_history` join `users_info` on((`access_history`.`UserId` = `users_info`.`UserId`)));
-
--- --------------------------------------------------------
-
---
--- Structure for view `users_info_view`
---
-DROP TABLE IF EXISTS `users_info_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `users_info_view` AS select `users_info`.`EntityNo` AS `EntityNo`,`users_info`.`UserId` AS `UserId`,`users_info`.`FirstName` AS `FirstName`,`users_info`.`LastName` AS `LastName`,`users_info`.`Gender` AS `Gender`,`users_info`.`Email` AS `Email`,`users_info`.`Photo` AS `Photo`,`users_info`.`PermanentAddress` AS `PermanentAddress`,`users_info`.`PresentAddress` AS `PresentAddress`,`users_info`.`PhoneNo` AS `PhoneNo`,`users_info`.`Birthdate` AS `Birthdate`,`users_info`.`BloodGroup` AS `BloodGroup`,`users_info`.`NationalIdNo` AS `NationalIdNo`,`users_info`.`JoinDate` AS `JoinDate`,`users_info`.`Role` AS `Role`,`users_info`.`CreatedBy` AS `CreatedBy`,`users_info`.`CreatedTime` AS `CreatedTime`,`user_access`.`Username` AS `Username`,`user_access`.`Password` AS `Password` from (`users_info` join `user_access` on((`users_info`.`UserId` = `user_access`.`UserId`)));
 
 --
 -- Indexes for dumped tables
@@ -419,7 +366,7 @@ MODIFY `EntityNo` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `medicines_info`
 --
 ALTER TABLE `medicines_info`
-MODIFY `EntityNo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `EntityNo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `selldetails_info`
 --

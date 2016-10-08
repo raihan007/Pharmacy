@@ -11,10 +11,11 @@ class Dealers extends CI_Controller {
 
 
 	public function test(){
-		$this->load->library('encrypt');
+		
 		$encrypted_string = $this->encrypt->encode("Raihan");
 		$plaintext_string = $this->encrypt->decode("AJCiIoa1MIC6K0kkTNN9NxShQBYyzzAjFMCcsnSolB2Zk05pnCE9+41sOvVA8Q6bmC2Svgo6Gy87jzyYu6tt/Q==");
 		echo $encrypted_string,$plaintext_string;
+	}
 	
 	public function testREq(){
 		echo $_SERVER['REQUEST_METHOD'];

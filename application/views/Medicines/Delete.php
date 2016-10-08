@@ -19,96 +19,83 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->EntityNo; ?></label>
+									            <label class="control-label"><?= $Medicine->EntityNo; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">First Name :</label>
+									            <label class="control-label">Name :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->FirstName ; ?></label>
+									            <label class="control-label"><?= $Medicine->Name ; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Last Name :</label>
+									            <label class="control-label">Category :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->LastName; ?></label>
+									            <label class="control-label"><?= $Medicine->Category; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Gender :</label>
+									            <label class="control-label">Batch Number :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Gender; ?></label>
+									            <label class="control-label"><?= $Medicine->BatchNumber; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Email :</label>
+									            <label class="control-label">Manufacturer :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Email; ?></label>
+									            <label class="control-label"><?= $Medicine->Manufacturer; ?></label>
 									        </dd>
+									        
 									        <dt>
-									            <label class="control-label">Photo :</label>
+									            <label class="control-label">Quantity :</label>
 									        </dt>
 
 									        <dd>
-									            <?php echo "<span style='height: 150px;width: 150px;'><img id='Photo' class='img-responsive img-thumbnail' src='".base_url('uploads/'.$employee->Photo)."' style='height: 150px; width: 150px;' /></span><br/><br/>";?>
+									            <label class="control-label"><?= $Medicine->Quantity; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Permanent Address :</label>
+									            <label class="control-label">Entry Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PermanentAddress; ?></label>
+									            <label class="control-label"><?= $Medicine->EntryDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Present Address :</label>
+									            <label class="control-label">Production Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PresentAddress; ?></label>
+									            <label class="control-label"><?= $Medicine->ProductionDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Phone No :</label>
+									            <label class="control-label">Expire Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PhoneNo; ?></label>
+									            <label class="control-label"><?= $Medicine->ExpireDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Date of Birth :</label>
+									            <label class="control-label">Buying Price :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Birthdate; ?></label>
+									            <label class="control-label"><?= $Medicine->BuyingPrice; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">BloodGroup :</label>
+									            <label class="control-label">Selling Price :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->BloodGroup; ?></label>
-									        </dd>
-									        <dt>
-									            <label class="control-label">National Id No :</label>
-									        </dt>
-
-									        <dd>
-									            <label class="control-label"><?= $employee->NationalIdNo; ?></label>
-									        </dd>
-									        <dt>
-									            <label class="control-label">Role :</label>
-									        </dt>
-
-									        <dd>
-									            <label class="control-label"><?= $employee->Role; ?></label>
+									            <label class="control-label"><?= $Medicine->SellingPrice; ?></label>
 									        </dd>
 			                            </dl>
 		                            </div>
 		                            <div class="">
-		                            	<?= anchor(base_url('Employees/AllEmployees'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-primary")) ?>
+		                            	<?= anchor(base_url('Medicines/AllMedicines'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-primary")) ?>
 		                            	<a href="#postModal" data-toggle="modal" class="btn btn-sm btn-danger" data-target="#postModal"> Delete</a>
 		                            </div>
 								</div>
@@ -129,8 +116,8 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
                           	</div>
                           	<div class="">
                           		<?= 
-                                    form_open(base_url('Employees/DeleteEmployee'),array('name' => 'DeleteEmployeeForm','class' => 'form-horizontal', 'id' => 'DeleteEmployeeForm')),
-                                	form_hidden('EntityNo',$employee->EntityNo),
+                                    form_open(base_url('Medicines/Delete'),array('name' => 'DeleteForm','class' => 'form-horizontal','method' => 'POST')),
+                                	form_hidden('EntityNo',$Medicine->EntityNo),
 									form_submit(['type' => 'submit','name'=> 'confirm','value'=> 'Confirm','class'=> 'btn btn-danger btn-sm']),
 									form_submit(['type' => 'button','name'=> 'Cancle','value'=> 'Cancle','data-dismiss'=> 'modal','aria-hidden'=> 'true','class'=> 'btn btn-info btn-sm']),
 									form_close();

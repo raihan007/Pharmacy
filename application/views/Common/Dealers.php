@@ -63,7 +63,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                                                         </tr>
                                                     </thead>
                                                 </table>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-xs-6 table-responsive">
                                         

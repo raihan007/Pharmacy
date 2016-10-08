@@ -192,7 +192,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php")
 
 		                                echo '<div class="form-group">';
 		                                    echo '<div class="col-lg-offset-2 col-lg-10">';
-		                                    	echo anchor(base_url('Employees/AllEmployees'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-success"));
+		                                    	echo anchor(base_url('Medicines/AllMedicines'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-success"));
 		                                        echo "&nbsp;";
 		                                        $data = array(
 													'type' => 'submit',

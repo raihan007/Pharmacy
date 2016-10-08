@@ -19,96 +19,83 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->EntityNo; ?></label>
+									            <label class="control-label"><?= $Medicine->EntityNo; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">First Name :</label>
+									            <label class="control-label">Name :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->FirstName ; ?></label>
+									            <label class="control-label"><?= $Medicine->Name ; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Last Name :</label>
+									            <label class="control-label">Category :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->LastName; ?></label>
+									            <label class="control-label"><?= $Medicine->Category; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Gender :</label>
+									            <label class="control-label">Batch Number :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Gender; ?></label>
+									            <label class="control-label"><?= $Medicine->BatchNumber; ?></label>
 									        </dd>
+									        
 									        <dt>
-									            <label class="control-label">Email :</label>
+									            <label class="control-label">Manufacturer :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Email; ?></label>
+									            <label class="control-label"><?= $Medicine->Manufacturer; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Photo :</label>
+									            <label class="control-label">Quantity :</label>
 									        </dt>
 
 									        <dd>
-									            <?php echo "<span style='height: 150px;width: 150px;'><img id='Photo' class='img-responsive img-thumbnail' src='".base_url('uploads/'.$employee->Photo)."' style='height: 150px; width: 150px;' /></span><br/><br/>";?>
+									            <label class="control-label"><?= $Medicine->Quantity; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Permanent Address :</label>
+									            <label class="control-label">Entry Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PermanentAddress; ?></label>
+									            <label class="control-label"><?= $Medicine->EntryDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Present Address :</label>
+									            <label class="control-label">Production Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PresentAddress; ?></label>
+									            <label class="control-label"><?= $Medicine->ProductionDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Phone No :</label>
+									            <label class="control-label">Expire Date :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->PhoneNo; ?></label>
+									            <label class="control-label"><?= $Medicine->ExpireDate; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">Date of Birth :</label>
+									            <label class="control-label">Buying Price :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->Birthdate; ?></label>
+									            <label class="control-label"><?= $Medicine->BuyingPrice; ?></label>
 									        </dd>
 									        <dt>
-									            <label class="control-label">BloodGroup :</label>
+									            <label class="control-label">Selling Price :</label>
 									        </dt>
 
 									        <dd>
-									            <label class="control-label"><?= $employee->BloodGroup; ?></label>
-									        </dd>
-									        <dt>
-									            <label class="control-label">National Id No :</label>
-									        </dt>
-
-									        <dd>
-									            <label class="control-label"><?= $employee->NationalIdNo; ?></label>
-									        </dd>
-									        <dt>
-									            <label class="control-label">Role :</label>
-									        </dt>
-
-									        <dd>
-									            <label class="control-label"><?= $employee->Role; ?></label>
+									            <label class="control-label"><?= $Medicine->SellingPrice; ?></label>
 									        </dd>
 			                            </dl>
 		                            </div>
 		                            <div class="">
-		                            	<?= anchor(base_url('Admin/Employees'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-default")) ?>
+		                            	<?= anchor(base_url('Medicines/AllMedicines'),"<i class='fa fa-arrow-left'> Back</i>",array('class'=>"btn btn-sm btn-default")) ?>
 		                            	<a href="#postModal" data-toggle="modal" class="btn btn-sm btn-info" data-target="#postModal"> Edit</a>
 		                            </div>
 								</div>
@@ -128,7 +115,7 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                           		<p class="text-danger"><strong>Are you sure you want to edit this item?</strong></p>
                           	</div>
                           	<div class="">
-                          		<?= anchor(base_url('Employees/Edit/'.$employee->EntityNo)," Edit",array('class'=>"btn btn-sm btn-primary",'data-toggle'=>"tooltip",'data-placement'=>"top",'data-original-title'=>"Edit"))
+                          		<?= anchor(base_url('Medicines/Edit/'.$Medicine->EntityNo)," Edit",array('class'=>"btn btn-sm btn-primary",'data-toggle'=>"tooltip",'data-placement'=>"top",'data-original-title'=>"Edit"))
                           		?>
                           		<a href="" data-dismiss='modal' aria-hidden='true' class='btn btn-default btn-sm'> Cancle</a>
                           	</div>

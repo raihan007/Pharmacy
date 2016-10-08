@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <head>
         <meta charset="UTF-8">
         <title><?= $title ?></title>
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="description" content="Developed By Talukder, Md. Raihan">
         <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
@@ -21,11 +22,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Date Picker -->
         <?= link_tag('Assets/bootstrap_datepicker/bootstrap-datetimepicker.min.css') ?>
-
+            
         <!-- Theme style -->
-        <?= link_tag('Assets/css/style.css') ?>
-        <?= link_tag('Assets/css/style1.css') ?>
         
+        <?= link_tag('Assets/css/style1.css') ?>
+        <?= link_tag('Assets/css/style.css') ?>
     </head>
     <body class="skin-black">
         <header class="header">

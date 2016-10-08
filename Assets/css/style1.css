@@ -1,4 +1,7 @@
 
+.fixed-table-pagination{
+  padding: 15px;
+}
 .modal-content {
     overflow:hidden;
 }

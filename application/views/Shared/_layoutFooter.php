@@ -95,10 +95,11 @@
     <script type="text/javascript" src="<?= base_url('Assets/js/jquery.min.js') ?>"></script>
     <!-- jQuery 2.0.2 -->
     <script type="text/javascript" src="<?= base_url('Assets/js/jquery.min.2.0.2.js') ?>"></script>
+    <script src="<?= base_url('Assets/js/toastr.min.js') ?>"></script>
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap.min.js') ?>"></script>
-    <script src="<?= base_url('Assets/js/toastr.min.js') ?>"></script>
+    
     <script type="text/javascript">
         var baseurl = "<?php print base_url(); ?>";
         /*var navClass = "<?php if(isset($class)){print $class;}?>";
@@ -117,13 +118,17 @@
     <!-- Director App -->
     <script type="text/javascript" src="<?= base_url('Assets/js/Director/app.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('Assets/js/moment.min.js') ?>"></script>
-    
-    <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap-table.js') ?>"></script>
-    
-    
-    
     <!-- Datetimepicker -->
     <script src="<?= base_url('Assets/bootstrap_datepicker/bootstrap-datetimepicker.min.js')?>" type="text/javascript"></script>
+    <!-- bootstrap-table -->
+    <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap-table.js') ?>"></script>
+    <!-- bootstrap-table-export -->
+    <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap-table-export.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('Assets/js/tableExport.js') ?>"></script>
+    
+    
+    
+    
     <script type="text/javascript">
       $("#toastr").click(function(){
         // Display a warning toast, with no title

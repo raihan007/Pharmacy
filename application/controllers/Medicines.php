@@ -15,7 +15,9 @@ class Medicines extends CI_Controller {
 	{
 		$data['title'] = 'Medicines';
 
-		if ($this->Error->hasNotification()) {
+		if ($this->session->flashdata('Notification')) {
+			$Notification = (object) $this->session->flashdata('Notification');
+			$this->Error->setErrorMessage($Notification->type,$Notification->title,$Notification->body);
 			$this->Error->getErrorMessage();
 		}
 
@@ -40,17 +42,21 @@ class Medicines extends CI_Controller {
 				
 				$insertStatus = $this->Medicine->Insert($insertData);
 				if( $insertStatus != 0){
-					$this->session->set_flashdata('Notification', 'Data have been saved successfully.');
-					$this->Error->setErrorMessage('success','Done',$this->session->flashdata('Notification'));
+					$notification  = array(
+					 	'type' => 'success',
+					 	'title' => 'Done',
+					 	'body' => 'Data have been saved successfully!',
+					);
 				}else{
-					$this->session->set_flashdata('Notification', 'Some problems occured, please try again.');
-					$this->Error->setErrorMessage('warning','Wargin',$this->session->flashdata('Notification'));
+					$notification  = array(
+					 	'type' => 'warning',
+					 	'title' => 'Wargin',
+					 	'body' => 'Some problems occured, please try again!',
+					);
 				}
+				$this->session->set_flashdata('Notification', $notification);
+				redirect('Medicines/AllMedicines','refreash');
 			}
-		}
-
-		if ($this->Error->hasNotification()) {
-			$this->Error->getErrorMessage();
 		}
 
 		$this->load->view('Medicines/Create',$data);
@@ -59,17 +65,113 @@ class Medicines extends CI_Controller {
 	public function Edit($EntityNo)
 	{
 		$data['title'] = 'Edit Medicine';
-		$data['Medicine'] = $this->Medicine->GetById(array('EntityNo' => $EntityNo));
+		$data['Medicine'] = $this->Medicine->GetWhere(false,array('EntityNo' => $EntityNo));
 		$data['Manufacturer'] = $this->Medicine->Get_Manufacturer_List();
 		$data['Manufacturer'] = array(' ' => '-- Select Manufacturer --') + $data['Manufacturer'];
 		$data['Category'] = $this->Medicine->Get_Category_List();
 		$data['Category'] = array(' ' => '-- Select Category --') + $data['Category'];
+
+		if($_SERVER['REQUEST_METHOD'] == 'POST'){
+			$this->load->library('form_validation');
+
+			if($this->form_validation->run('NewMedicineForm')){
+				$Where = (array)$data['Medicine'];
+				$UpdateData = $this->input->post();
+
+				unset($UpdateData['EntityNo'],$UpdateData['MedicineId']);
+
+				$UpdateStatus = $this->Medicine->Update($Where,$UpdateData);
+				
+				if( $UpdateStatus != 0){
+					$notification  = array(
+					 	'type' => 'info',
+					 	'title' => 'Done',
+					 	'body' => 'Data have been updated successfully!',
+					);
+				}else{
+					$notification  = array(
+					 	'type' => 'warning',
+					 	'title' => 'Wargin',
+					 	'body' => 'Some problems occured, please try again!',
+					);
+				}
+
+				$this->session->set_flashdata('Notification', $notification);
+				redirect('Medicines/AllMedicines','refreash');
+			}
+		}
+		
 		$this->load->view('Medicines/Edit',$data);
 	}
 
-	public function test(){
-		echo $this->uniquekey->GUID();
+	public function Remove($EntityNo)
+	{
+		$data['title'] = "Delete Medicine";
+		
+		$data['Medicine'] = $this->Medicine->GetWhere(true,array('EntityNo' => $EntityNo));
+			
+		$this->load->view('Medicines/Delete',$data);
 	}
+
+	public function Details($EntityNo)
+	{
+		$data['title'] = "Details Medicine";
+		
+		$data['Medicine'] = $this->Medicine->GetWhere(true,array('EntityNo' => $EntityNo));
+			
+		$this->load->view('Medicines/Details',$data);
+	}
+
+	public function Delete(){
+
+		$EntityNo = $this->input->post('EntityNo');
+		$Medicine = $this->Medicine->GetWhere(false,array('EntityNo' => $EntityNo));
+		$Medicine =  (array) $Medicine;
+
+		//Pass user data to model
+		//$deleteStatus = $this->Medicine->Delete($Medicine);		
+		$deleteStatus = true;
+		//Storing insertion status message.
+		if($deleteStatus){
+			$notification  = array(
+			 	'type' => 'success',
+			 	'title' => 'Done',
+			 	'body' => 'Data have been deleted successfully!',
+			);
+		    
+		}else{
+		    $notification  = array(
+			 	'type' => 'error',
+			 	'title' => 'Wrong',
+			 	'body' => 'Please try again!',
+			);
+		}
+		$this->session->set_flashdata('Notification', $notification);
+		redirect('Medicines/AllMedicines','refreash');
+	}
+
+
+	//Start Json Data Return Methods
+	public function MedicinesInfo_json()
+	{
+		$Total = $this->Medicine->GetTotalCount();
+		if(isset($_REQUEST['search']) && isset($_REQUEST['type'])){
+        	$search = $_REQUEST['search'];
+        	$type = $_REQUEST['type'];
+    	}else{
+        	$search = '';
+        	$type = '';
+    	}
+		$sort =$_REQUEST['sort'];
+		$order = $_REQUEST['order'];
+		$offset = $_REQUEST['offset'];
+		$limit = $_REQUEST['limit'];
+		
+		$data['rows'] = $this->Medicine->Get(true,$type,$search,$sort,$order,$limit,$offset);
+		$data['total'] = $Total;
+		echo json_encode($data);
+	}
+	//End Json Data Return Methods
 
 
 	
@@ -90,6 +192,37 @@ class Medicines extends CI_Controller {
     	return $response;
 	}
 
+	public function test(){
+		/*$empInfo =  array(
+			'canGet' => 1000,
+			'canCreate' => 1001,
+			'canEdit' => 1002,
+			'canDelete' => 1003 
+		);
+
+
+		$key = array_search (1001, $empInfo);
+
+		echo $key;*/
+
+		if($this->Medicine->PermissionStatus('25025E-8C57-48C7-BB68-187A52F26926')){
+			$notification  = array(
+			 	'type' => 'success',
+			 	'title' => 'Done',
+			 	'body' => 'Data have been deleted successfully!',
+			);
+		}
+		else{
+			$notification  = array(
+			 	'type' => 'error',
+			 	'title' => 'Opss!',
+			 	'body' => 'Sorry you have no permission for this action!',
+			);
+		}
+		$this->session->set_flashdata('Notification', $notification);
+		redirect('Medicines/AllMedicines','refreash');
+	}
+
 
 	//validation extended methods
 	function Check_Is_Unique($Value) 
@@ -102,7 +235,9 @@ class Medicines extends CI_Controller {
     	{
         	$EntityNo = '';
     	}
+
     	$result = $this->Medicine->IsUnique(array('Name' => $Value),array('EntityNo' => $EntityNo));
+
     	if($result == 0)
     	{
         	$response = true;
