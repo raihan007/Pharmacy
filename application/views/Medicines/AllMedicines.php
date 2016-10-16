@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php
 require_once(APPPATH."views/Shared/_layoutHeader.php");
 ?>
+                    <button id="testbtn"></button>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel">

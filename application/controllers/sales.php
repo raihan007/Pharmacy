@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Common extends CI_Controller {
+class Sales extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -9,8 +9,8 @@ class Common extends CI_Controller {
 		$this->load->library('ErrorHandler',null,'Error');
 	}
 
-	public function Category(){
-		$data['title'] = 'Medicine Category';
+	public function Sell(){
+		$data['title'] = 'Medicine Sell';
 		
 		if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$this->load->library('form_validation');
@@ -59,7 +59,7 @@ class Common extends CI_Controller {
 			$this->Error->getErrorMessage();
 		}
 
-		$this->load->view('Common/Category',$data);
+		$this->load->view('Sales/Sell',$data);
 	}
 
 	public function DeleteCategory()

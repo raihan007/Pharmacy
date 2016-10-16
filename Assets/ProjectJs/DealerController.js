@@ -142,14 +142,5 @@ $.fn.clearForm = function() {
   });
 };
 
-/*$('body').on('change', 'select.searchType', function() {
-    $('#DealersTable').bootstrapTable('refresh');
-});*/
 
-/*function Messages(notification) {
-    if(typeof notification !== 'undefined')
-    {
-        toastr[notification.type](notification.body,notification.title);
-    }
-}*/
 

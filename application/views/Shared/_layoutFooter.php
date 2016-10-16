@@ -95,23 +95,15 @@
     <script type="text/javascript" src="<?= base_url('Assets/js/jquery.min.js') ?>"></script>
     <!-- jQuery 2.0.2 -->
     <script type="text/javascript" src="<?= base_url('Assets/js/jquery.min.2.0.2.js') ?>"></script>
-    <script src="<?= base_url('Assets/js/toastr.min.js') ?>"></script>
-
     <!-- Bootstrap -->
     <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap.min.js') ?>"></script>
+    <!-- Kendo UI -->
+    <script type="text/javascript" src="<?= base_url('Assets/Contents/js/Kendo/kendo.all.min.js') ?>"></script>
+    <!-- //Kendo UI -->
+    <script src="<?= base_url('Assets/js/toastr.min.js') ?>"></script>
     
     <script type="text/javascript">
         var baseurl = "<?php print base_url(); ?>";
-        /*var navClass = "<?php if(isset($class)){print $class;}?>";
-        var navSubClass = "<?php if(isset($subClass)){print $subClass;}?>";
-        $( document ).ready(function() {
-            $('.sidebar-menu li').removeClass("active");
-            var c = "."+navClass;
-            var c1 = "."+navSubClass;
-            $(c).addClass("active");
-            $(c1).addClass("active");
-            $('#UsersMenu').style.display ='block';
-        });*/
     </script>
     <script src="<?= base_url('Assets/js/bootstrap3-typeahead.min.js') ?>"></script>  
     <script type="text/javascript" src="<?= base_url('Assets/ProjectJs/settings.js') ?>"></script>
@@ -125,15 +117,5 @@
     <!-- bootstrap-table-export -->
     <script type="text/javascript" src="<?= base_url('Assets/js/bootstrap-table-export.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('Assets/js/tableExport.js') ?>"></script>
-    
-    
-    
-    
-    <script type="text/javascript">
-      $("#toastr").click(function(){
-        // Display a warning toast, with no title
-        toastr.warning('My name is Inigo Montoya. You Killed my father, prepare to die!');
-      });
-    </script>
     
     

@@ -29,11 +29,14 @@ class CommonModel extends CI_Model {
 		}
 	}
 
-	public function _Get1()
+	public function _Get1($type,$search,$limit,$offset)
 	{
 		$query = $this->db
-					->from($this->tableName);
-		
+					->from($this->tableName)
+					->limit($limit, $offset);
+		if($type && $search) {
+            $this->db->where($type,$search);
+        }
 
 		$query = $this->db->get();
 		

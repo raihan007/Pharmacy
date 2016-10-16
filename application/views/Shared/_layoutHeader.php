@@ -13,6 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?= link_tag('Assets/css/toastr.min.css') ?>
         <!-- bootstrap 3.0.2 -->
         <?= link_tag('Assets/css/bootstrap.min.css') ?>
+        <!-- Kendo Material CSS -->
+        <?= link_tag('Assets/Contents/css/Kendo/kendo.common-material.min.css') ?>
+        <?= link_tag('Assets/Contents/css/Kendo/kendo.material.min.css') ?>
+        <!-- //Kendo Material CSS -->
         <!-- font Awesome -->
         <?= link_tag('Assets/font-awesome-4.6.3/css/font-awesome.min.css') ?>
         <!-- Ionicons -->

@@ -1,3 +1,11 @@
+[data-notify="progressbar"] {
+  margin-bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 5px;
+}
 
 .fixed-table-pagination{
   padding: 15px;
@@ -14,8 +22,20 @@
     background-color: #4697ce;
 }
 
+textarea.k-textbox{
+  white-space: normal;
+  text-indent: .4em;
+  padding: 2px .3em;
+  font-size: 15px;
+}
+
 .customTollbar{
   margin-right: 5px;
+}
+
+
+table.FormTable th, td {
+  padding: 3px;
 }
 
 

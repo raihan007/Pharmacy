@@ -8,58 +8,58 @@ require_once(APPPATH."views/Shared/_layoutHeader.php");
                         <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
                             <section class="panel">
                                 <header class="panel-heading">
-                                  Categories
+                                  Sale Medicines
                                 </header>
                                 <div class="panel-body table-responsive">
                                     <div id="splitter" style="height: 600px; border: none;">
                                         <div>
-                                            <div id="searchToolbar" style="padding-right: 5px;">
-                                                <form class="form-search form-inline">
-                                                    <select name="searchType" id="searchType">
-                                                    </select>
-                                                    <input type="text" class="k-textbox form-control" id="searchKey" placeholder="Search Here..." />
-                                                    <button type="button" id="SearchAction" class="k-button k-primary"><span class="glyphicon glyphicon-search"></span></button>
-                                                    <button class="k-button" type="button" id="refresh" title="Refresh"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
-                                                </form>
-                                            </div>
-                                            
-                                            <div id="CategoryGrid">
-                                            
-                                            </div>
-                                        </div>
-                                        <div>
                                             <div style="padding: 15px;" data-role="view" data-use-native-scrolling="true">
-                                                <form id="CategoryForm" name="CategoryForm" method="post" class="form-horizontal" action="<?= base_url('Common/Category') ?>">
+                                                <form id="SellsForm" name="CategoryForm" method="post" class="form-horizontal" action="<?= base_url('Common/Category') ?>">
+                                                    <legend>Add Medicine</legend>
                                                     <table id="FormTable" class="FormTable table-responsive">
                                                         <tr>
-                                                            <th><label class="km-label-above">Entity No.</label></th>
-                                                            <td><input type="text" class="k-textbox" name="EntityNo" id="EntityNo" readonly="readonly" placeholder="Entity No" style="width: 180%;"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="km-label-above">Title</label></th>
-                                                            <td><input type="text" class="k-textbox" name="Title" id="Title" placeholder="Title" value="<?= set_value('Title') ?>" style="width: 180%;"></td>
+                                                            <th><label class="km-label-above">Medicine Name</label></th>
+                                                            <td><input type="text" required validationMessage="Medicine name is required." class="k-textbox" name="MedicineName" id="MedicineName" placeholder="Medicine Name" style="width: 120%;"></td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
-                                                            <td><span class="text-danger validation"><?= form_error('Title') ?></span></td>
+                                                            <td><span class="k-invalid-msg" data-for="MedicineName"></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <th><label class="km-label-above">Remarks</label></th>
+                                                            <th><label class="km-label-above">Price</label></th>
+                                                            <td><input type="number" required validationMessage="Medicine price is required." min="0" class="k-textbox" name="Price" id="Price" placeholder="Price" style="width: 120%;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><span class="k-invalid-msg" data-for="Price"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="km-label-above">Quantity</label></th>
                                                             <td>
-                                                                <textarea class="k-textbox" name="Remarks" rows="8" id="Remarks" placeholder="Remarks" style="width: 180%;"></textarea>
-                                                                
+                                                                <input type="number" min="0" required validationMessage="Medicine quantity is required." class="k-textbox" name="Quantity" id="Quantity" placeholder="Quantity" style="width: 120%;">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
-                                                            <td><span class="text-danger validation"><?= form_error('Remarks') ?></span></td>
+                                                            <td><span class="k-invalid-msg" data-for="Quantity" ></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="km-label-above">Total</label></th>
+                                                            <td>
+                                                                <input type="number" min="0" readonly="readonly" class="k-textbox" name="Total" id="Total" placeholder="Total" style="width: 120%;">
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
-                                                            <td><button type="button" name="SaveCategory" id="SaveCategory" class="btn btn-info">Save</button></td>
+                                                            <td><button type="button" name="AddSell" id="AddSell" class="btn btn-info">Add</button></td>
                                                         </tr>
                                                     </table>
                                                 </form>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div id="SellsGrid">
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -213,10 +213,11 @@ require_once(APPPATH."views/Shared/_layoutFooter.php");
 ?>
     <script type="text/x-kendo-template" id="toolbarTemplate">
         <div class="toolbar">
-            <button type="button" id="newCategory" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add new</button>
-            <button type="button" id="removeCategory" disabled class="deleteCategory btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+            <button type="button" id="newBill" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New Bill</button>
+            <button type="button" id="newBill" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Confirm</button>
+            <button type="button" id="cancelItem" disabled class="cancelItem btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</button>
         </div>
     </script>
-    <script type="text/javascript" src="<?= base_url('Assets/ProjectJs/CommonController.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('Assets/ProjectJs/SalesController.js') ?>"></script>
     </body>
 </html>

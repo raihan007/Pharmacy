@@ -39,13 +39,6 @@ $('#DataGrid').bootstrapTable({
 
     customTollbar();
     },
-    /*onAll: function (arg1, arg2) {
-        $(".columns-right").find('button[name="refresh"]').addClass("btn-sm");
-            $(".search").find('input[type="text"]').addClass("input-sm");
-            $(".pagination-detail").find('button[type="button"]').addClass("btn-sm");
-            $('div.pagination').find('ul.pagination').addClass('pagination-sm');
-    },*/
-
 });
 
 $('.columns-right button[name="refresh"]').click(function(e) {
@@ -103,6 +96,21 @@ $('#newCategory').on('click', function() {
     //$('#CategoryForm').attr('action', baseurl+"Dealers");
     $('#CategoryForm').clearForm();
     //toastr['error']("Test","Delete");
+});
+
+$('#testbtn').on('click', function() {
+    $.notify({
+        icon: 'glyphicon glyphicon-star',
+        title: "Welcome:",
+        message: "This plugin has been provided to you by Robert McIntosh aka mouse0270"
+    },{
+        // settings
+        type: "danger",
+        allow_dismiss: true,
+        newest_on_top: true,
+        showProgressbar: true,
+        icon_type: 'class'
+    });
 });
 
 $('#DeleteCategory').on('click',function(){

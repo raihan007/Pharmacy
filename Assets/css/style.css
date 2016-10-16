@@ -18,8 +18,13 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f1f2f7;
-  font-size: 95%;
+  font-size: 95% !important;
 }
+
+.btn{
+  overflow:none !important;
+}
+
 a {
   color: #3c8dbc;
 }
@@ -2724,6 +2729,9 @@ vertical-align: top;
 }
 .mailbox .table-mailbox tr > td > a {
   color: #444;
+}
+#searchToolbar {
+    margin-bottom: 15px;
 }
 @media screen and (max-width: 767px) {
   .mailbox .nav-stacked > li:not(.header) {

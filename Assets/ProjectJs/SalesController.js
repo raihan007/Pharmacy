@@ -1,105 +1,138 @@
+
+    var currentId = 0;
+    // A hard coded list of items to render
+    var dataSource= new kendo.data.DataSource({
+        serverAggregates:false,
+        aggregate: [
+            { field: "Name", aggregate: "count" },
+            { field: "Total", aggregate: "sum" }
+          ],
+        schema: {
+            model: {
+              id: "id",
+              fields: {
+                id: { type: "number" },
+                Name: { type: "string" },
+                Price: { type: "number" },
+                Quantity: { type: "number" },
+                Total: { type: "number" }
+              }
+            }
+        }
+    });
+
 $("#splitter").kendoSplitter({
     panes: [
-        { size: "50%", max: "50%", min: "40%" },
-        { collapsible: false, size: "50%",}
+        { size: "40%", max: "40%", min: "40%" },
+        { collapsible: false, size: "60%",}
     ]
 });
 
-$("#grid").kendoGrid({
-    dataSource: {
-        type: "odata",
-                            transport: {
-                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-                            },
-                            schema: {
-                                model: {
-                                    fields: {
-                                        OrderID: { type: "number" },
-                                        Freight: { type: "number" },
-                                        ShipName: { type: "string" },
-                                        OrderDate: { type: "date" },
-                                        ShipCity: { type: "string" }
-                                    }
-                                }
-                            },
-                            pageSize: 20,
-                            serverPaging: true,
-                            serverFiltering: true,
-                            serverSorting: true
-                        },
-                        filterable: true,
-                        sortable: true,
-                        pageable: {
-                            refresh: true,
-                            pageSizes: true,
-                            buttonCount: 5
-                        },
-                        columns: [{
-                                field:"OrderID",
-                                filterable: false
-                            },
-                            "Freight",
-                            {
-                                field: "OrderDate",
-                                title: "Order Date",
-                                format: "{0:MM/dd/yyyy}"
-                            }, {
-                                field: "ShipName",
-                                title: "Ship Name"
-                            }, {
-                                field: "ShipCity",
-                                title: "Ship City"
-                            }
-                        ]
-                    });
+// Handle adding a new to do item
+  $("#AddSell").click(function(e){
+    e.preventDefault();
+    currentId += 1;
+    var validator = $("#SellsForm").kendoValidator().data("kendoValidator");
+    if (validator.validate()) {
+        var Name = $("#MedicineName").val();
+        var Price = $("#Price").val();
+        var Quantity = $("#Quantity").val();
+        var Total = $("#Total").val();
+    
+        dataSource.add({
+          id: currentId,
+          Name: Name,
+          Price: parseFloat(Price),
+          Quantity: parseInt(Quantity),
+          Total: parseFloat(Total)
+        });
+        $('#SellsForm').clearForm();
+    }
+  });
 
-$("#CategoryGrid").kendoGrid({
+  $("#Quantity").change(function(){
+        setTotalValu();
+    });
+  $("#Price").change(function(){
+        setTotalValu();
+    });
+
+  function setTotalValu() {
+    var Price = parseFloat($("#Price").val());
+        var Quantity = parseInt($("#Quantity").val());
+        var total = (Price * Quantity);
+        $("#Total").val(total);
+  }
+
+  function calc() {
+      // assume this to be dynamically determined  
+      var field = "Total";
+      
+      // some custom calc logic
+      var newValue = 0;
+      
+      $.each(dataSource.data(), function(index, model) {
+          newValue += model.get(field);
+      });
+      
+      return newValue;
+    }
+
+// Handle removing cleared items
+  $("#remove-done").click(function(e){
+    e.preventDefault();
+
+    var raw = dataSource.data();
+    var length = raw.length;
+
+    // iterate and remove "done" items
+    var item, i;
+    for(i=length-1; i>=0; i--){
+
+      item = raw[i];
+      if (item.done){
+        dataSource.remove(item);
+      }
+
+    }
+
+  });
+
+
+$("#SellsGrid").kendoGrid({
     sortable  : true,
-    filterable: true,
-    autoSync: true,
-    pageable  : {
-        pageSizes: [5,10,20,50,"All"],
-        numeric: false,
-    },
-    dataSource: {
-        transport: {
-            read: {
-                url     : baseurl+'Common/test',
-                type: "GET",
-                dataType: "Json",
-            }
-        },
-        schema: {
-            data: 'rows',
-            total: "total" // total is returned in the "total" field of the response
-        },
-        pageSize: 5,
-        serverPaging: true
-    },
+    //filterable: true,
     toolbar: kendo.template($("#toolbarTemplate").html()),
     noRecords: {
         template: "No data found!"
     },
+    dataSource : dataSource,
     columns   : [
-        { field: "EntityNo", title: "#", width: "20%"  },
-        { field: "Title", title: "Title" },
+        { field: "id", title: "#", width: '8%'},
+        { field: "Name", title: "Name", width: '35%', footerTemplate: "Count: #=count#</span>" },
+        { field: "Price", title: "Price" },
+        { field: "Quantity", title: "Quantity" },
+        { field: "Total", title: "Total", footerTemplate: "Total: <span id='footerPlaceholder'>#=calc()#</span>" },
         //{ command: [{ className: "btn-destroy", name: "destroy", text: "Remove" }] }
     ],
-        height: "90%",
-        scrollable: true,
-        change: handleChange,
-        selectable: "row",
-        mobile: true,
-        messages: {
-            noRecords: "There is no data on current page"
-        }
-    });
+    height: "90%",
+    scrollable: true,
+    change: handleChange,
+    selectable: "row",
+    mobile: true,
+    messages: {
+        noRecords: "There is no data on current page"
+    },
+    save:function(e){
+        this.refresh();
+    },
+});
 
 function handleChange(e) {
     var row = e != null ? e.sender.dataItem(e.sender.select()) : null;
 
     if(row != null){
-        $('.deleteCategory').prop("disabled", false);
+        $('.cancelItem').prop("disabled", false);
         $('#CategoryId').val(row.EntityNo);
         $('#EntityNo').val(row.EntityNo);
         $('#Title').val(row.Title);
@@ -109,6 +142,28 @@ function handleChange(e) {
     
     
 }
+
+$("#cancelItem").click(function(e){ 
+           clearSelectedRows("SellsGrid"); 
+ });
+
+function clearSelectedRows(gridName) {
+ 
+           // identifying grid
+ 
+            var entityGrid = $("#" + gridName + "").data("kendoGrid");
+ 
+            // finding all the selected rows
+            var rows = entityGrid.select();
+            rows.each(function (index, row) {
+ 
+                        // reading each selected item
+                         var selectedItem = entityGrid.dataItem(row);
+ 
+                       // finally removing selected item from grid data source
+                         entityGrid.dataSource.remove(selectedItem); 
+              });
+ }
 
 $(".k-grid-new").click(function(e){
     $('#CategoryForm').clearForm();
@@ -292,7 +347,7 @@ $.fn.clearForm = function() {
     var type = this.type, tag = this.tagName.toLowerCase();
     if (tag == 'form')
       return $(':input',this).clearForm();
-    if (type == 'text' || type == 'email' || type == 'password' || tag == 'textarea')
+    if (type == 'text' || type == 'number' || type == 'email' || type == 'password' || tag == 'textarea')
       this.value = '';
     else if (type == 'checkbox' || type == 'radio')
       this.checked = false;
